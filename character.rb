@@ -37,16 +37,24 @@ class Character
 
   private
     def get_info atributo
-      info = "#{atributo}: #{instance_variable_get('@'+atributo)}"
+      soma = instance_variable_get('@'+atributo)
+      info = "#{atributo}: #{soma}"
+      tag = info.length
       for cls in @classes
         rel = cls.send("#{atributo}")
         if rel > 0
           info += "+#{rel}"
+          soma += rel
         elsif rel < 0
           info += "#{rel}"
+          soma += rel
         end
       end
-      "#{info}\n"
+      if tag == info.length
+        "#{info}\n"
+      else
+        "#{info}=#{soma}\n"
+      end
     end
 
     def get_classes

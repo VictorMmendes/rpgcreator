@@ -84,7 +84,49 @@ loop do
         end
         gets.strip
 
+      when 4
+          system "clear"
+          puts "FILTRAR POR RAÇA"
+          racas.each_with_index do |value, index|
+            puts "#{index}- #{value}"
+          end
+          print "Op: "
+          op = gets.strip.to_i
+
+          if op < racas.length
+              for person in array
+                if person.class.name == racas[op]
+                    puts person.get_all_info
+                end
+              end
+          else
+              puts "Opção inválida!"
+          end
+          gets.strip
+
       when 5
+          system "clear"
+          puts "FILTRAR POR CLASSE"
+          hash.each_with_index do |value, index|
+            puts "#{index}- #{value}"
+          end
+          print "Op: "
+          op = gets.strip.to_i
+
+          if op < hash.length
+              for person in array
+                  person.get_classes_as_array.each do |c|
+                      if c == hash[op]
+                        puts person.get_all_info
+                      end
+                  end
+              end
+          else
+              puts "Opção inválida!"
+          end
+          gets.strip
+
+      when 6
         break
     end
   system "clear"
